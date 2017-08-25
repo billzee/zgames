@@ -1,0 +1,45 @@
+<div class="container pb-4">
+  <div class="row">
+    <div class="col">
+
+      <% if @games.length > 0 %>
+        <table class="table table-inverse table-bordered">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Capa</th>
+              <th>Título</th>
+              <th>Preço s/ Manual</th>
+              <th>Preço c/ Manual</th>
+              <th>Linguagem</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @games.each do |game| %>
+              <tr>
+                <th>
+                  <%= link_to(game.id, edit_game_path(game.id)) %>
+                </th>
+                <td class="text-center">
+                  <img src="https://gamefaqs.akamaized.net/box/6/4/7/6647_front.jpg" height="100">
+                </td>
+                <td><%= game.title %></td>
+                <td><%= game.price %></td>
+                <td><%= game.price_with_manual %></td>
+                <td>pt-BR</td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p class="text-center">
+          Nenhum game cadastrado.
+        </p>
+      <% end %>
+
+      <p class="text-center">
+        <%= link_to("Cadastrar um game", new_game_path) %>
+      </p>
+    </div>
+  </div>
+</div>

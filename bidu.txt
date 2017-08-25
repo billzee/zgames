@@ -1,0 +1,8 @@
+Um catálogo/lista mostrando quais jogos têm disponibilidade p/ produção imediata:
+  *cada item do catálogo deve ter:
+    - Nome
+    - Preço s/ manual (normal)
+    - Preço c/ manual (se este campo estiver em branco, nem aparece)
+    - Diponibilidade (caso não esteja disponível, NÃO aparece na lista)
+    - Imagem
+    - É traduzido?

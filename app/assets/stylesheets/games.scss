@@ -1,0 +1,40 @@
+@import "bootstrap";
+
+.table > tbody > tr{
+  td {
+   vertical-align: middle;
+  }
+  th {
+    vertical-align: middle;
+  }
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: 600;
+  word-wrap: break-word;
+}
+
+h2 {
+  font-size: 14px;
+  font-weight: 600;
+  word-wrap: break-word;
+}
+
+h3 {
+  font-size: 12px;
+  font-weight: 600;
+  word-wrap: break-word;
+}
+
+h4 {
+  font-size: 10px;
+  font-weight: 600;
+  word-wrap: break-word;
+}
+
+h5 {
+  font-size: 8px;
+  font-weight: 600;
+  word-wrap: break-word;
+}
