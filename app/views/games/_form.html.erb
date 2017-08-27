@@ -1,7 +1,16 @@
 <%= form_for @game, url: {action: action} do |f| %>
   <div class="row">
     <div class="col col-md-4 text-center mb-3">
-      <img src="https://gamefaqs.akamaized.net/box/6/4/7/6647_front.jpg" height="200">
+      <% if @game.image.file %>
+        <%= image_tag(@game.image, height: '225', width: '225', id:"game_image_tag") %>
+      <% else %>
+        <%= image_tag("no_image.jpg", height: '225', width: '225', id:"game_image_tag") %>
+      <% end %>
+      <br>
+      <label class="fileContainer mt-2">
+        <button class="btn btn-primary">Trocar imagem</button>
+        <%= f.file_field :image %>
+      </label>
     </div>
 
     <div class="col col-md-8">
@@ -10,23 +19,22 @@
         <%= f.text_field :title, class: "form-control" %>
       </div>
       <div class="row">
-        <div class="col-6 col-md-4">
+        <div class="col-6">
           <div class="form-group">
-            <label>Preço normal</label>
+            <label>Preço normal (R$)</label>
             <%= f.text_field(:price, class: "form-control") %>
           </div>
         </div>
-        <div class="col-6 col-md-4">
+        <div class="col-6">
           <div class="form-group">
-            <label>Preço c/ manual</label>
+            <label>Preço c/ manual (R$)</label>
             <%= f.text_field(:price_with_manual, class: "form-control") %>
           </div>
         </div>
       </div>
       <div class="form-group">
         <label>Disponível?</label>
-          <%= f.check_box(:is_available, class: "form-check-input") %>
-
+        <%= f.check_box(:is_available) %>
       </div>
 
       <button type="submit" class="btn btn-success btn-block mt-4">

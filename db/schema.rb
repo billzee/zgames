@@ -15,8 +15,10 @@ ActiveRecord::Schema.define(version: 20170825162742) do
   create_table "games", force: :cascade do |t|
     t.string "title"
     t.string "image"
-    t.float "price"
-    t.float "price_with_manual"
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "BRL", null: false
+    t.integer "price_with_manual_cents", default: 0, null: false
+    t.string "price_with_manual_currency", default: "BRL", null: false
     t.boolean "is_available"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

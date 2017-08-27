@@ -3,8 +3,8 @@
     <div class="col">
 
       <% if @games.length > 0 %>
-        <table class="table table-inverse table-bordered">
-          <thead>
+        <table class="table">
+          <thead class="thead-inverse">
             <tr>
               <th>#</th>
               <th>Capa</th>
@@ -16,16 +16,16 @@
           </thead>
           <tbody>
             <% @games.each do |game| %>
-              <tr>
+              <tr class="<%= if !game.is_available then "table-danger" end%>">
                 <th>
                   <%= link_to(game.id, edit_game_path(game.id)) %>
                 </th>
                 <td class="text-center">
-                  <img src="https://gamefaqs.akamaized.net/box/6/4/7/6647_front.jpg" height="100">
+                  <%= image_tag(game.image, height: '100') %>
                 </td>
                 <td><%= game.title %></td>
-                <td><%= game.price %></td>
-                <td><%= game.price_with_manual %></td>
+                <td><%= number_to_currency(game.price) %></td>
+                <td><%= number_to_currency(game.price_with_manual) %></td>
                 <td>pt-BR</td>
               </tr>
             <% end %>
