@@ -57,6 +57,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # zgames gems
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
 gem 'devise'
 gem 'money-rails', '~>1'
 gem "font-awesome-rails"

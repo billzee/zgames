@@ -1,7 +1,7 @@
 class Game < ApplicationRecord
   enum region: [ :ntsc_u, :ntsc_j, :pal ]
 
-  monetize :price_cents
+  monetize :price_cents, default: nil
   monetize :price_with_manual_cents
 
   mount_uploader :image, ImageUploader
