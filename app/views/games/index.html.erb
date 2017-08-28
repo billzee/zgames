@@ -11,7 +11,7 @@
               <th>Título</th>
               <th>Preço s/ Manual</th>
               <th>Preço c/ Manual</th>
-              <th>Qtd de discos</th>
+              <th>Nº de discos</th>
               <th>Região</th>
               <th>Opção de patch <%= image_tag("icons/brazil_flag.png", height: "20") %> ?</th>
             </tr>
@@ -23,7 +23,12 @@
                   <%= link_to(game.id, edit_game_path(game.id)) %>
                 </th>
                 <td>
-                  <%= image_tag(game.image, height: '100') %>
+                  <% if game.image.file %>
+                    <%= image_tag(game.image, height: '100') %>
+                  <% else %>
+                    <%= image_tag("no_image.jpg", height: '100') %>
+                  <% end %>
+
                 </td>
                 <td><%= game.title %></td>
                 <td>
@@ -41,7 +46,7 @@
                   <% end %>
                 </td>
                 <td><%= game.disc_quantity %></td>
-                <td><%= game.region %></td>
+                <td><%= Game.translate_region game.region %></td>
                 <td>
                   <% if game.translated? %>
                     <i class="fa fa-check-circle text-success"></i>
@@ -54,7 +59,7 @@
           </tbody>
         </table>
       <% else %>
-        <p class="text-center">
+        <p class="text-center pt-3">
           Nenhum game cadastrado.
         </p>
       <% end %>

@@ -22,7 +22,6 @@
 pt-BR:
   errors:
     messages:
-      mini_magick_processing_error: arquivo não-suportado
   activerecord:
     models:
       user:
@@ -30,12 +29,13 @@ pt-BR:
         other: Usuários
     attributes:
       game:
-        regions:
+        region:
           ntsc_u: NTSC-U
           ntsc_j: NTSC-J
           pal: PAL
-      reply:
-        text: resposta
+        title:
+          one: Título
+          other: Títulos
     errors:
       messages:
         mini_magick_processing_error: arquivo não-suportado

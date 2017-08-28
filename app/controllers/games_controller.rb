@@ -17,6 +17,7 @@ class GamesController < ApplicationController
     if game.save
       redirect_to root_path
     else
+      @game = game
       render :new
     end
   end
@@ -28,6 +29,7 @@ class GamesController < ApplicationController
     if game.update game_params
       redirect_to root_path
     else
+      @game = game
       render :edit
     end
   end
