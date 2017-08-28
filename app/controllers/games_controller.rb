@@ -1,4 +1,6 @@
 class GamesController < ApplicationController
+  before_action :authenticate_admin!, :except => [:index]
+
   def index
     @games = Game.all.order(title: :asc)
   end
@@ -25,7 +27,6 @@ class GamesController < ApplicationController
   def update
     game = Game.find params[:id]
 
-    p game_params
     if game.update game_params
       redirect_to root_path
     else
