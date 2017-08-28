@@ -11,22 +11,44 @@
               <th>Título</th>
               <th>Preço s/ Manual</th>
               <th>Preço c/ Manual</th>
-              <th>Linguagem</th>
+              <th>Qtd de discos</th>
+              <th>Região</th>
+              <th>Opção de patch <%= image_tag("icons/brazil_flag.png", height: "20") %> ?</th>
             </tr>
           </thead>
           <tbody>
             <% @games.each do |game| %>
-              <tr class="<%= if !game.is_available then "table-danger" end%>">
+              <tr class="<%= if !game.available? then "table-danger" end %>">
                 <th>
                   <%= link_to(game.id, edit_game_path(game.id)) %>
                 </th>
-                <td class="text-center">
+                <td>
                   <%= image_tag(game.image, height: '100') %>
                 </td>
                 <td><%= game.title %></td>
-                <td><%= number_to_currency(game.price) %></td>
-                <td><%= number_to_currency(game.price_with_manual) %></td>
-                <td>pt-BR</td>
+                <td>
+                  <% if game.price.fractional > 0 %>
+                    R$ <%= game.price %>
+                  <% else %>
+                    N/A
+                  <% end %>
+                </td>
+                <td>
+                  <% if game.price_with_manual.fractional > 0 %>
+                    R$ <%= game.price_with_manual %>
+                  <% else %>
+                    N/A
+                  <% end %>
+                </td>
+                <td><%= game.disc_quantity %></td>
+                <td><%= game.region %></td>
+                <td>
+                  <% if game.translated? %>
+                    <i class="fa fa-check-circle text-success"></i>
+                  <% else %>
+                    <i class="fa fa-times-circle text-danger"></i>
+                  <% end %>
+                </td>
               </tr>
             <% end %>
           </tbody>

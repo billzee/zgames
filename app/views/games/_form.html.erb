@@ -32,12 +32,36 @@
           </div>
         </div>
       </div>
-      <div class="form-group">
-        <label>Disponível?</label>
-        <%= f.check_box(:is_available) %>
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group">
+            <label>Região</label> <br>
+            <%= f.select :region, options_for_select(Game.region_attributes_for_select), {}, {class: "custom-select"} %>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label>Número de discos</label>
+            <%= f.number_field(:disc_quantity, class: "form-control") %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group">
+            <label>Opção de Patch <%= image_tag("icons/brazil_flag.png", height: "20") %> ?</label> <br>
+            <%= f.check_box(:translated) %>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label>Disponível?</label> <br>
+            <%= f.check_box(:available) %>
+          </div>
+        </div>
       </div>
 
-      <button type="submit" class="btn btn-success btn-block mt-4">
+      <button type="submit" class="btn btn-success btn-block mt-3">
         <% if action == "update" %>
           Atualizar
         <% else %>

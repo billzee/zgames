@@ -19,7 +19,10 @@ ActiveRecord::Schema.define(version: 20170825162742) do
     t.string "price_currency", default: "BRL", null: false
     t.integer "price_with_manual_cents", default: 0, null: false
     t.string "price_with_manual_currency", default: "BRL", null: false
-    t.boolean "is_available"
+    t.boolean "available"
+    t.boolean "translated"
+    t.integer "disc_quantity", default: 1
+    t.integer "region", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

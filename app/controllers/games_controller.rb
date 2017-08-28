@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   def index
-    @games = Game.all
+    @games = Game.all.order(title: :asc)
   end
 
   def new
@@ -14,18 +14,6 @@ class GamesController < ApplicationController
   def create
     game = Game.new game_params
 
-    if game.price_with_manual
-      original_format = currency_to_number game.price_with_manual
-      game.price_with_manual = original_format
-    end
-
-    if game.price
-      original_format = currency_to_number game.price
-      game.price = original_format
-    end
-
-    p game
-
     if game.save
       redirect_to root_path
     else
@@ -36,18 +24,7 @@ class GamesController < ApplicationController
   def update
     game = Game.find params[:id]
 
-    if game.price_with_manual
-      original_format = currency_to_number game.price_with_manual
-      game.price_with_manual = original_format
-    end
-
-    if game.price
-      original_format = currency_to_number game.price
-      game.price = original_format
-    end
-
-    p game
-
+    p game_params
     if game.update game_params
       redirect_to root_path
     else
@@ -58,12 +35,7 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:title, :price, :image, :price_with_manual, :is_available)
-  end
-
-  def currency_to_number currency
-    p currency
-
-    currency.to_s.gsub(/[$.]/,'').gsub(/[$,]/,'.').to_f
+    params.require(:game).permit(:title, :price, :image, :price_with_manual,
+    :available, :region, :translated, :disc_quantity)
   end
 end

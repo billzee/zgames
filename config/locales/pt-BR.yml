@@ -28,18 +28,12 @@ pt-BR:
       user:
         one: Usuário
         other: Usuários
-      post:
-        one: Publicação
-        other: Publicações
-      comment:
-        one: Comentário
-        other: Comentários
-      reply:
-        one: Resposta
-        other: Respostas
     attributes:
-      comment:
-        text: comentário
+      game:
+        regions:
+          ntsc_u: NTSC-U
+          ntsc_j: NTSC-J
+          pal: PAL
       reply:
         text: resposta
     errors:
