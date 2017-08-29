@@ -55,12 +55,11 @@ h2 {
 
 .image-large{
   img{
-    display: none;
     border: 2px black solid;
-    left: -95px;
-    top: 10px;
-    bottom: 0;
-    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    display: none;
+    position: fixed;
   }
 }
 
