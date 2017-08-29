@@ -1,74 +1,84 @@
+<% if admin_signed_in? %>
+  <div class="row mb-3">
+    <div class="col text-right">
+      <%= link_to("Cadastrar um game", new_game_path) %>
+    </div>
+  </div>
+<% end %>
 
-  <div class="row">
-    <div class="col">
+<div class="row">
+  <div class="col-12">
 
-      <% if @games.length > 0 %>
-        <table class="table">
-          <thead class="thead-inverse">
-            <tr>
-              <th>Cód</th>
-              <th>Capa</th>
-              <th>Título</th>
-              <th>Preço s/ Manual</th>
-              <th>Preço c/ Manual</th>
-              <th>Nº de discos</th>
-              <th>Região</th>
-              <th>Opção de patch <%= image_tag("icons/brazil_flag.png", height: "20") %> ?</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @games.each do |game| %>
-              <tr class="<%= if !game.available? then "table-danger" end %>">
-                <th>
-                  <%= link_to(game.id, edit_game_path(game.id)) %>
-                </th>
-                <td>
-                  <%= link_to edit_game_path(game.id) do %>
+    <% if @games.length > 0 %>
+      <table class="table">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Cód</th>
+            <th>Capa</th>
+            <th>Título</th>
+            <th>Preço s/ Manual</th>
+            <th>Preço c/ Manual</th>
+            <th>Nº de discos</th>
+            <th>Região</th>
+            <th>Opção de patch <%= image_tag("icons/brazil_flag.png", height: "20") %> ?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @games.each do |game| %>
+            <tr class="<%= if !game.available? then "table-danger" end %>">
+              <th>
+                <%= link_to_if(admin_signed_in?, game.id, edit_game_path(game.id))%>
+              </th>
+              <td>
+                <% if admin_signed_in? %>
+                  <%= link_to(edit_game_path(game.id)) do %>
                     <% if game.image.file %>
                       <%= image_tag(game.image, height: '100') %>
                     <% else %>
                       <%= image_tag("no_image.jpg", height: '100') %>
                     <% end %>
                   <% end %>
-                </td>
-                <td><%= game.title %></td>
-                <td>
-                  <% if game.price.fractional > 0 %>
-                    R$ <%= game.price %>
+                <% else %>
+                  <% if game.image.file %>
+                    <%= image_tag(game.image, height: '100') %>
                   <% else %>
-                    N/A
+                    <%= image_tag("no_image.jpg", height: '100') %>
                   <% end %>
-                </td>
-                <td>
-                  <% if game.price_with_manual.fractional > 0 %>
-                    R$ <%= game.price_with_manual %>
-                  <% else %>
-                    N/A
-                  <% end %>
-                </td>
-                <td><%= game.disc_quantity %></td>
-                <td><%= Game.translate_region game.region %></td>
-                <td>
-                  <% if game.translated? %>
-                    <i class="fa fa-check-circle text-success"></i>
-                  <% else %>
-                    <i class="fa fa-times-circle text-danger"></i>
-                  <% end %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      <% else %>
-        <p class="text-center pt-3">
-          Nenhum game cadastrado.
-        </p>
-      <% end %>
-
-      <p class="text-center">
-        <% if admin_signed_in? %>
-          <%= link_to("Cadastrar um game", new_game_path) %>
-        <% end %>
+                <% end %>
+              </td>
+              <td><%= game.title %></td>
+              <td>
+                <% if game.price.fractional > 0 %>
+                  R$ <%= game.price %>
+                <% else %>
+                  N/A
+                <% end %>
+              </td>
+              <td>
+                <% if game.price_with_manual.fractional > 0 %>
+                  R$ <%= game.price_with_manual %>
+                <% else %>
+                  N/A
+                <% end %>
+              </td>
+              <td><%= game.disc_quantity %></td>
+              <td><%= Game.translate_region game.region %></td>
+              <td>
+                <% if game.translated? %>
+                  <i class="fa fa-check-circle text-success"></i>
+                <% else %>
+                  <i class="fa fa-times-circle text-danger"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p class="text-center pt-3">
+        Nenhum game cadastrado.
       </p>
-    </div>
+    <% end %>
+
   </div>
+</div>

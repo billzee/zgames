@@ -2,7 +2,11 @@ class GamesController < ApplicationController
   before_action :authenticate_admin!, :except => [:index]
 
   def index
-    @games = Game.all.order(title: :asc)
+    if admin_signed_in?
+      @games = Game.all.order(title: :asc)
+    else
+      @games = Game.where(available: true).order(title: :asc)
+    end
   end
 
   def new
