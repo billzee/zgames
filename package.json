@@ -4,7 +4,8 @@
   "dependencies": {
     "bootstrap-switch": "^3.3.4",
     "jquery": "^3.2.1",
-    "jquery-mask-plugin": "^1.14.11"
+    "jquery-mask-plugin": "^1.14.11",
+    "zoom": "0.0.2"
   },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "version": "1.0.0",

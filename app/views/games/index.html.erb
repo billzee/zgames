@@ -30,20 +30,10 @@
                 <%= link_to_if(admin_signed_in?, game.id, edit_game_path(game.id))%>
               </th>
               <td>
-                <% if admin_signed_in? %>
-                  <%= link_to(edit_game_path(game.id)) do %>
-                    <% if game.image.file %>
-                      <%= image_tag(game.image, height: '100') %>
-                    <% else %>
-                      <%= image_tag("no_image.jpg", height: '100') %>
-                    <% end %>
-                  <% end %>
+                <% if game.image.file %>
+                  <%= image_tag(game.image, height: '100', class: "image") %>
                 <% else %>
-                  <% if game.image.file %>
-                    <%= image_tag(game.image, height: '100') %>
-                  <% else %>
-                    <%= image_tag("no_image.jpg", height: '100') %>
-                  <% end %>
+                  <%= image_tag("no_image.jpg", height: '100') %>
                 <% end %>
               </td>
               <td><%= game.title %></td>
