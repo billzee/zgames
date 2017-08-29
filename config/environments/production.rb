@@ -3,8 +3,8 @@ Rails.application.configure do
 
   # aws s3
   ENV['S3_BUCKET_NAME'] = "zgames"
-  ENV['S3_KEY'] = "AKIAJ4MWWZ6DIH2P3LGA"
-  ENV['S3_SECRET'] = "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"
+  ENV['S3_KEY'] = "AKIAJIIMMU4BPLM6D5RA"
+  ENV['S3_SECRET'] = "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"
   ENV['S3_URL'] = "http://s3.amazonaws.com/#{ENV['S3_BUCKET_NAME']}/"
 
   # Code is not reloaded between requests.
