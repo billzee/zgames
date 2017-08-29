@@ -1,6 +1,12 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # aws s3
+  ENV['S3_BUCKET_NAME'] = "zgames"
+  ENV['S3_KEY'] = "AKIAJ4MWWZ6DIH2P3LGA"
+  ENV['S3_SECRET'] = "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"
+  ENV['S3_URL'] = "http://s3.amazonaws.com/#{ENV['S3_BUCKET_NAME']}/"
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 

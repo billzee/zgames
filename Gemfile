@@ -60,4 +60,5 @@ gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 gem 'devise'
 gem 'money-rails', '~>1'
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
+gem 'fog-aws'
