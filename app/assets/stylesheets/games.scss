@@ -52,3 +52,23 @@ h2 {
 #game_image_tag{
   border: 1px solid black;
 }
+
+.image-large{
+  img{
+    display: none;
+    border: 2px black solid;
+    left: -95px;
+    top: 10px;
+    bottom: 0;
+    position: absolute;
+  }
+}
+
+.image-small{
+  cursor: zoom-in;
+  cursor: -moz-zoom-in;
+  cursor: -webkit-zoom-in;
+  img{
+    height: 100px;
+  }
+}

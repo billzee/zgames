@@ -1,3 +1,13 @@
+<script>
+  function magnify(game_id){
+    $("#image-large-" +  game_id + " > img").show();
+  }
+
+  function unmagnify(game_id){
+    $("#image-large-" +  game_id + " > img").hide();
+  }
+</script>
+
 <% if admin_signed_in? %>
   <div class="row mb-3">
     <div class="col text-right">
@@ -31,7 +41,14 @@
               </th>
               <td>
                 <% if game.image.file %>
-                  <%= image_tag(game.image, height: '100', class: "image") %>
+                  <div class="image-large" id="image-large-<%= game.id %>">
+                    <%= image_tag(game.image) %>
+                  </div>
+                  <div class="image-small" id="image-small-<%= game.id %>"
+                    onmouseover="magnify(<%= game.id %>)"
+                    onmouseout="unmagnify(<%= game.id %>)">
+                    <%= image_tag(game.image) %>
+                  </div>
                 <% else %>
                   <%= image_tag("no_image.jpg", height: '100') %>
                 <% end %>
